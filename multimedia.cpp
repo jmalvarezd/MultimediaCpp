@@ -1,29 +1,26 @@
 #include "multimedia.h"
 
-Multimedia::Multimedia();
-
 Multimedia::Multimedia(string _objectName, string _filePath){
     objectName = _objectName;
     filePath = _filePath;
 }
 
-void setObjectName(string _objectName){
+void Multimedia::setObjectName(string _objectName){
     objectName = _objectName;
 }
-string getObjectName(){
+string Multimedia::getObjectName(){
     return objectName;
 }
 
-void setFilePath(string _filePath){
+void Multimedia::setFilePath(string _filePath){
     filePath = _filePath;
 }
-string getFilePath(){
+string Multimedia::getFilePath(){
     return filePath;
 }
 
-void print(ostream& os){
+void Multimedia::print(ostream& os){
     os << "name: " << objectName << " filePath: " << filePath;
 }
 
-~Multimedia(){}
 

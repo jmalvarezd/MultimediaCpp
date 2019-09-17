@@ -1,7 +1,10 @@
 #ifndef MULTIMEDIA_H
 #define MULTIMEDIA_H
 
+#include <string>
+#include <iostream>
 
+using namespace std;
 class Multimedia
 {
 private:
@@ -16,6 +19,8 @@ public:
 
     void setFilePath(string _filePath);
     string getFilePath();
+
+    void print(ostream& os);
 
     ~Multimedia();
 };
