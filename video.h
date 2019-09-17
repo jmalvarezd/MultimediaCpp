@@ -21,7 +21,7 @@ public:
     void setDuration(int _duration);
     int getDuration();
 
-    void play();
+    void play() override;
 };
 
 #endif // VIDEO_H

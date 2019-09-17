@@ -22,7 +22,7 @@ public:
 
     void print(ostream& os);
 
-    void play() const;
+    virtual void play() {};
 
     ~Multimedia();
 };

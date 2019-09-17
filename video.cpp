@@ -9,5 +9,5 @@ void Video::setDuration(int _duration){
 }
 
 void Video::play(){
-    system(c_str("mpv " + filePath +" &"));    // nom_du_fichier est le chemin complet
+    system(("mpv " + getFilePath() +" &").c_str());    // nom_du_fichier est le chemin complet
 }

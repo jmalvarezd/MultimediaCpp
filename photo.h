@@ -2,8 +2,11 @@
 #define PHOTO_H
 
 #include "multimedia.h"
+#include <string>
+#include <cstring>
+#include <iostream>
 
-class Photo
+class Photo : public Multimedia
 {
 private:
     float latitude = 0.0;
@@ -21,6 +24,9 @@ public:
 
     void setLongitude(float _longitude);
     int getLongitude() const;
+
+    void play() override;
+
 };
 
 #endif // PHOTO_H

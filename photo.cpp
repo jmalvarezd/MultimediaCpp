@@ -13,3 +13,7 @@ void Photo::setLongitude(float _longitude){
 int Photo::getLongitude() const{
     return longitude;
 }
+
+void Photo::play(){
+    system(("imagej "+ getFilePath() +" &").c_str());
+}
