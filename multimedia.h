@@ -11,16 +11,18 @@ private:
     string objectName = "";
     string filePath = "";
 public:
-    Multimedia();
+    Multimedia() {};
     Multimedia(string _objectName, string _filePath);
 
     void setObjectName(string _objectName);
-    string getObjectName();
+    string getObjectName() const;
 
     void setFilePath(string _filePath);
-    string getFilePath();
+    string getFilePath() const;
 
     void print(ostream& os);
+
+    void play() const;
 
     ~Multimedia();
 };

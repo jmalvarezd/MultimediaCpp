@@ -8,14 +8,14 @@ Multimedia::Multimedia(string _objectName, string _filePath){
 void Multimedia::setObjectName(string _objectName){
     objectName = _objectName;
 }
-string Multimedia::getObjectName(){
+string Multimedia::getObjectName() const{
     return objectName;
 }
 
 void Multimedia::setFilePath(string _filePath){
     filePath = _filePath;
 }
-string Multimedia::getFilePath(){
+string Multimedia::getFilePath() const{
     return filePath;
 }
 

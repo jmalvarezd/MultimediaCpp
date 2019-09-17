@@ -1,17 +1,22 @@
 #ifndef VIDEO_H
 #define VIDEO_H
 
+#include "multimedia.h"
+#include <string>
+#include <iostream>
 
-class Video:public Multimedia
+class Video : public Multimedia
 {
 private:
     int duration = 0;
 public:
-    Video();
-    Video(int _duration);
+    Video() {};
+    Video(string _objectName, string _filePath, int _duration);
 
     void setDuration(int _duration);
     int getDuration();
+
+    void play();
 };
 
 #endif // VIDEO_H
