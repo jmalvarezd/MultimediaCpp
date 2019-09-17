@@ -1,11 +1,5 @@
 #include "video.h"
 
-Video::Video(string _objectName, string _filePath, int _duration) :
-    Multimedia(_objectName, _filePath)
-{
-    duration = _duration;
-}
-
 int Video::getDuration(){
     return duration;
 }

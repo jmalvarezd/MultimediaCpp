@@ -10,7 +10,11 @@ private:
     float longitude = 0.0;
 public:
     Photo();
-    Photo(string _objectName, string _filePath, float _latitude, float _longitude);
+    Photo(string _objectName, string _filePath, float _latitude, float _longitude)
+        : Multimedia(_objectName, _filePath) {
+        latitude = _latitude;
+        longitude = _longitude;
+    }
 
     void setLatitude(float _latitude);
     int getLatitude() const;

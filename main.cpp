@@ -13,7 +13,7 @@ int main(int argc, const char* argv[])
 {
     string s1 = "asd";
     string s2 = "abc";
-    Video * m = new Video(s1,s2,10);
+    Video * m = new Video(s1,s2,15);
     m->print(cout);
     std::cout << "Hello brave new world" << std::endl;
     return 0;

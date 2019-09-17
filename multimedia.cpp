@@ -1,6 +1,7 @@
 #include "multimedia.h"
 
-Multimedia::Multimedia(string _objectName, string _filePath){
+Multimedia::Multimedia(string _objectName, string _filePath)
+{
     objectName = _objectName;
     filePath = _filePath;
 }
