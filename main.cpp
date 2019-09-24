@@ -12,11 +12,25 @@ using namespace std;
 
 int main(int argc, const char* argv[])
 {
-    string s1 = "test Image";
-    string s2 = "/cal/homes/jalvarez/inf224/resources/image1.png";
-    Photo * m = new Photo(s1,s2,15.0, 13.0);
-    m->print(cout);
-    m->play();
-    std::cout << "Hello brave new world" << std::endl;
+    string sv1 = "test Video";
+    string sv2 = "/cal/homes/jalvarez/inf224/resources/video1.mp4";
+
+    string si1 = "test Image";
+    string si2 = "/cal/homes/jalvarez/inf224/resources/image1.png";
+
+    Video * video = new Video(sv1,sv2,15);
+    Photo * photo = new Photo(si1,si2,15.0,13.0);
+
+    Multimedia ** tableau = new Multimedia * [10];
+    unsigned int count = 0;
+
+    tableau[count++] = video;
+    tableau[count++] = photo;
+
+    for (int i = 0; i < 2; i++){
+        tableau[i]->play();
+    };
+
+    std::cout << "m: " << video << std::endl;
     return 0;
 }

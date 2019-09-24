@@ -1,0 +1,4 @@
+multimedia.o: multimedia.cpp multimedia.h
+main.o: main.cpp video.h multimedia.h photo.h
+photo.o: photo.cpp photo.h multimedia.h
+video.o: video.cpp video.h multimedia.h
