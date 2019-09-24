@@ -19,7 +19,7 @@ public:
     }
 
     void setDuration(int _duration);
-    int getDuration();
+    int getDuration() const;
 
     void play() override;
 };

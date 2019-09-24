@@ -7,6 +7,7 @@
 #include <iostream>
 #include "video.h"
 #include "photo.h"
+#include "film.h"
 
 using namespace std;
 
@@ -27,10 +28,13 @@ int main(int argc, const char* argv[])
     tableau[count++] = video;
     tableau[count++] = photo;
 
-    for (int i = 0; i < 2; i++){
-        tableau[i]->play();
-    };
+    Film * film = new Film();
+    int debug[4] = {1,2,3,4};
+    film->setDurations(debug,4);
+    film->printDurations();
+    debug[3] = 5;
+    film->printDurations();
 
-    std::cout << "m: " << video << std::endl;
+    //std::cout << "m: " << video << std::endl;
     return 0;
 }

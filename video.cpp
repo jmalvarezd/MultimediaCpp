@@ -1,6 +1,6 @@
 #include "video.h"
 
-int Video::getDuration(){
+int Video::getDuration() const{
     return duration;
 }
 
