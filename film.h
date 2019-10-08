@@ -8,19 +8,17 @@
 class Film : public Video
 {
 private:
-    int * durations;
+    int * durations = nullptr;
     int numberOfChapters;
-    Multimedia ** chapters;
 public:
     Film();
 
     Film(string _objectName, string _filePath, int _duration,
-         int * _durations, int _numberOfChapters, Multimedia ** _chapters) :
+         int * _durations, int _numberOfChapters) :
         Video(_objectName, _filePath, _duration)
     {
         durations = _durations;
         numberOfChapters = _numberOfChapters;
-        chapters = _chapters;
     }
 
     void setDurations(int * _durations, int _size);
@@ -30,8 +28,8 @@ public:
     void setNumberOfChapters(int _numberOfChapters);
     int getNumberOfChapters() const;
 
-    void setChapters(Multimedia ** _chapters, int _size);
-    Multimedia ** getChapters() const;
+//    void setChapters(Multimedia ** _chapters, int _size);
+//    Multimedia ** getChapters() const;
 
     void printDurations() const;
 

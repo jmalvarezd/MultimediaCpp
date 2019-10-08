@@ -33,19 +33,19 @@ void Film::modifyDurations(int * _durations, int _size){
     numberOfChapters = _size;
 };
 
-void Film::setChapters(Multimedia ** _chapters, int _size){
-    chapters = new Multimedia * [_size];
-    for(int i = 0; i < _size; i++){
-        chapters[i] = _chapters[i];
-    }
-    numberOfChapters = _size;
-};
-Multimedia ** Film::getChapters() const{
-    return chapters;
-};
+//void Film::setChapters(Multimedia ** _chapters, int _size){
+//    chapters = new Multimedia * [_size];
+//    for(int i = 0; i < _size; i++){
+//        chapters[i] = _chapters[i];
+//    }
+//    numberOfChapters = _size;
+//};
+//Multimedia ** Film::getChapters() const{
+//    return chapters;
+//};
 
 void Film::printDurations() const{
     for(int i = 0; i < numberOfChapters; i++){
-        cout << durations[i] << endl;
+        cout <<"Chapter "<< i << " duration: " << durations[i] << endl;
     }
 };

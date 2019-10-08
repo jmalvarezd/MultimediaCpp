@@ -38,6 +38,7 @@ int main(int argc, const char* argv[])
     film->setDurations(debug,4);
     film->printDurations();
 
+    //8e etape
     Group * group = new Group("FirstGroup");
     group->push_back(video);
     group->print(cout);
