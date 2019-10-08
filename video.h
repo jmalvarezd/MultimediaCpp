@@ -21,7 +21,11 @@ public:
     void setDuration(int _duration);
     int getDuration() const;
 
+    void print(ostream &s) override;
+
     void play() override;
+
+    ~Video();
 };
 
 #endif // VIDEO_H

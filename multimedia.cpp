@@ -24,4 +24,9 @@ void Multimedia::print(ostream& os){
     os << "name: " << objectName << " filePath: " << filePath << endl;
 }
 
+Multimedia::~Multimedia(){
+    cout << "destroying Multimedia " << endl;
+    this->print(cout);
+}
+
 

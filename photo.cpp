@@ -17,3 +17,13 @@ int Photo::getLongitude() const{
 void Photo::play(){
     system(("imagej "+ getFilePath() +" &").c_str());
 }
+
+void Photo::print(ostream& s) {
+    Multimedia::print(s);
+    s<< "Photo: Latitude: " << getLatitude()  << " Longitude: "  << getLongitude() << endl;
+}
+
+Photo::~Photo(){
+    cout << "destroying photo" << endl;
+    this->print(cout);
+}

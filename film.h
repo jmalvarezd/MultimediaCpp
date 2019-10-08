@@ -33,6 +33,8 @@ public:
 
     void printDurations() const;
 
+    ~Film();
+
 };
 
 #endif // FILM_H

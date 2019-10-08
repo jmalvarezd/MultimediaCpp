@@ -49,3 +49,8 @@ void Film::printDurations() const{
         cout <<"Chapter "<< i << " duration: " << durations[i] << endl;
     }
 };
+
+Film::~Film(){
+    cout << "Deleting durations pointer"<< endl;
+    delete[] durations;
+}

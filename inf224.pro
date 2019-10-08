@@ -8,5 +8,15 @@ DEPENDPATH += .
 INCLUDEPATH += .
 
 # Input
-HEADERS += multimedia.h
-SOURCES += main.cpp multimedia.cpp
+HEADERS += multimedia.h \
+    manager.h \
+    group.h \
+    film.h \
+    photo.h \
+    video.h
+SOURCES += main.cpp multimedia.cpp \
+    manager.cpp \
+    film.cpp \
+    group.cpp \
+    photo.cpp \
+    video.cpp

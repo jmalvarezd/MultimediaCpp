@@ -4,6 +4,7 @@
 #include <string>
 #include <iostream>
 
+
 using namespace std;
 class Multimedia
 {
@@ -14,17 +15,17 @@ public:
     Multimedia() {};
     Multimedia(string _objectName, string _filePath);
 
-    void setObjectName(string _objectName);
-    string getObjectName() const;
+    virtual void setObjectName(string _objectName);
+    virtual string getObjectName() const;
 
-    void setFilePath(string _filePath);
-    string getFilePath() const;
+    virtual void setFilePath(string _filePath);
+    virtual string getFilePath() const;
 
-    void print(ostream& os);
+    virtual void print(ostream& os);
 
     virtual void play() {};
 
-    ~Multimedia();
+    virtual ~Multimedia();
 };
 
 #endif // MULTIMEDIA_H

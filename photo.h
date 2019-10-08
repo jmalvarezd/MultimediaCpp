@@ -25,8 +25,11 @@ public:
     void setLongitude(float _longitude);
     int getLongitude() const;
 
+    void print(ostream &s) override;
+
     void play() override;
 
+    ~Photo();
 };
 
 #endif // PHOTO_H
