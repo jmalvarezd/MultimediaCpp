@@ -15,7 +15,7 @@
 using namespace std;
 using namespace cppu;
 
-const int PORT = 3331;
+const int PORT = 3332;
 
 class Manager
 {
@@ -29,6 +29,7 @@ public:
     Film createFilm(string _objectName, string _filePath, int _duration, int * _durations, int _numberOfChapters);
     Group createGroup(string _groupName);
     void displayMultimedia(string _objectName, ostream& os);
+    void playMultimedia(string _objectName);
     bool processRequest(TCPConnection& cnx, const string& request, string& response);
 };
 

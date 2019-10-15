@@ -21,7 +21,7 @@ string Multimedia::getFilePath() const{
 }
 
 void Multimedia::print(ostream& os){
-    os << "name: " << objectName << " filePath: " << filePath << endl;
+    os << "name: " << objectName << " filePath: " << filePath << " ";
 }
 
 Multimedia::~Multimedia(){

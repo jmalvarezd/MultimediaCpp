@@ -20,7 +20,7 @@ void Photo::play(){
 
 void Photo::print(ostream& s) {
     Multimedia::print(s);
-    s<< "Photo: Latitude: " << getLatitude()  << " Longitude: "  << getLongitude() << endl;
+    s<< "Photo: Latitude: " << getLatitude()  << " Longitude: "  << getLongitude() << " ";
 }
 
 Photo::~Photo(){

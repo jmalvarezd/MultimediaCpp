@@ -14,7 +14,7 @@ void Video::play(){
 
 void Video::print(ostream& s) {
     Multimedia::print(s);
-    s<< "Video: Duration: " << getDuration()  << endl;
+    s << "Video: Duration: " << getDuration()  << " ";
 }
 
 Video::~Video(){

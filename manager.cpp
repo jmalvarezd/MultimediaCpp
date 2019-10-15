@@ -33,18 +33,26 @@ void Manager::displayMultimedia(string _objectName, ostream& os){
     multimediaMap[_objectName]->print(os);
 }
 
+void Manager::playMultimedia(string _objectName){
+    multimediaMap[_objectName]->play();
+}
+
 bool Manager::processRequest(TCPConnection& cnx, const string& request, string& response)
 {
   cerr << "\nRequest: '" << request << "'" << endl;
 
   // 1) pour decouper la requête:
   // on peut par exemple utiliser stringstream et getline()
-
+  stringstream str;
+  str << request;
+  string action, target;
+  str >> action;
+  str >> target;
 
   // 2) faire le traitement:
   // - si le traitement modifie les donnees inclure: TCPLock lock(cnx, true);
   // - sinon juste: TCPLock lock(cnx);
-
+  TCPLock lock(cnx);
 
   // 3) retourner la reponse au client:
   // - pour l'instant ca retourne juste OK suivi de la requête
@@ -52,8 +60,15 @@ bool Manager::processRequest(TCPConnection& cnx, const string& request, string& 
   //   des objets ou des groupes en lui passant en argument un stringstream
   // - attention, la requête NE DOIT PAS contenir les caractères \n ou \r car
   //   ils servent à délimiter les messages entre le serveur et le client
+  stringstream answer;
 
-  response = "OK: " + request;
+  if(action == "find"){
+      displayMultimedia(target,answer);
+  }
+  else if(action == "play"){
+      playMultimedia(target);
+  }
+  response = "OK: " + answer.str();
   cerr << "response: " << response << endl;
 
   // renvoyer false si on veut clore la connexion avec le client

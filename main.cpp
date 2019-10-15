@@ -69,6 +69,11 @@ int main(int argc, const char* argv[])
     // cree l'objet qui gère les données
     shared_ptr<Manager> base(new Manager());
 
+    string si1 = "test";
+    string si2 = "/cal/homes/jalvarez/inf224/resources/image1.png";
+
+    base->createPhoto(si1,si2,25.0,20.0);
+
     // le serveur appelera cette méthode chaque fois qu'il y a une requête
     server->setCallback(*base, &Manager::processRequest);
 

@@ -46,7 +46,7 @@ void Film::modifyDurations(int * _durations, int _size){
 
 void Film::printDurations() const{
     for(int i = 0; i < numberOfChapters; i++){
-        cout <<"Chapter "<< i << " duration: " << durations[i] << endl;
+        cout <<"Chapter "<< i << " duration: " << durations[i] << " ";
     }
 };
 
