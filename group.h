@@ -15,7 +15,7 @@ public:
     {
         groupName = _groupName;
     };
-    string getName();
+    string getName() const;
     void setName(string _name);
 
     void print(ostream &s){

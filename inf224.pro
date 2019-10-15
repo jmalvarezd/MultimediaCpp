@@ -20,3 +20,6 @@ SOURCES += main.cpp multimedia.cpp \
     group.cpp \
     photo.cpp \
     video.cpp
+
+DISTFILES += \
+    Makefile

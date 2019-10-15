@@ -1,7 +1,7 @@
 #include "group.h"
 
 
-string Group::getName(){
+string Group::getName() const{
     return groupName;
 }
 void Group::setName(string _name){
