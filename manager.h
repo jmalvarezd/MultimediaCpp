@@ -15,7 +15,7 @@
 using namespace std;
 using namespace cppu;
 
-const int PORT = 3332;
+const int PORT = 3331;
 
 class Manager
 {
@@ -30,6 +30,10 @@ public:
     Group createGroup(string _groupName);
     void displayMultimedia(string _objectName, ostream& os);
     void playMultimedia(string _objectName);
+    void displayGroup(string _objectName, ostream& os);
+    void playGroup(string _objectName);
+    void display(string _objectName, ostream& os);
+    void play(string _objectName);
     bool processRequest(TCPConnection& cnx, const string& request, string& response);
 };
 

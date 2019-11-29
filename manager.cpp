@@ -37,6 +37,23 @@ void Manager::playMultimedia(string _objectName){
     multimediaMap[_objectName]->play();
 }
 
+void Manager::displayGroup(string _objectName, ostream& os){
+    groupMap[_objectName]->print(os);
+}
+
+void Manager::playGroup(string _objectName){
+    groupMap[_objectName]->play();
+}
+
+void Manager::display(string _objectName, ostream& os){
+    displayMultimedia(_objectName,os);
+    displayGroup(_objectName,os);
+}
+
+void Manager::play(string _objectName){
+    playMultimedia(_objectName);
+    playGroup(_objectName);
+}
 bool Manager::processRequest(TCPConnection& cnx, const string& request, string& response)
 {
   cerr << "\nRequest: '" << request << "'" << endl;
@@ -63,12 +80,19 @@ bool Manager::processRequest(TCPConnection& cnx, const string& request, string& 
   stringstream answer;
 
   if(action == "find"){
-      displayMultimedia(target,answer);
+      display(target,answer);
   }
   else if(action == "play"){
-      playMultimedia(target);
+      play(target);
+      answer << "playing " << target ;
   }
-  response = "OK: " + answer.str();
+
+  if(answer.str().empty()){
+      response = "404 COULD NOT FIND";
+  }
+  else{
+      response = "OK: " + answer.str();
+  }
   cerr << "response: " << response << endl;
 
   // renvoyer false si on veut clore la connexion avec le client

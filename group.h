@@ -24,6 +24,12 @@ public:
             (*it)->print(s);
         }
     }
+
+    void play(){
+        for (Group :: iterator it = this-> begin(); it != this->end(); it++){
+            (*it)->play();
+        }
+    }
 };
 
 #endif // GROUPE_H
