@@ -29,30 +29,77 @@ Group Manager::createGroup(string _groupName){
     return *(smartGroup.get());
 }
 
-void Manager::displayMultimedia(string _objectName, ostream& os){
-    multimediaMap[_objectName]->print(os);
+bool Manager::displayMultimedia(string _objectName, ostream& os){
+    if(multimediaMap.find(_objectName) == multimediaMap.end()){
+        return false;
+    }
+    else{
+        multimediaMap[_objectName]->print(os);
+        return true;
+    }
 }
 
-void Manager::playMultimedia(string _objectName){
-    multimediaMap[_objectName]->play();
+bool Manager::playMultimedia(string _objectName){
+    if(multimediaMap.find(_objectName) == multimediaMap.end()){
+        return false;
+    }
+    else{
+        multimediaMap[_objectName]->play();
+        return true;
+    }
 }
 
-void Manager::displayGroup(string _objectName, ostream& os){
-    groupMap[_objectName]->print(os);
+bool Manager::displayGroup(string _objectName, ostream& os){
+    if(groupMap.find(_objectName) == groupMap.end()){
+        return false;
+    }
+    else{
+        groupMap[_objectName]->print(os);
+        return true;
+    }
 }
 
-void Manager::playGroup(string _objectName){
-    groupMap[_objectName]->play();
+bool Manager::playGroup(string _objectName){
+    if(groupMap.find(_objectName) == groupMap.end()){
+        return false;
+    }
+    else{
+        groupMap[_objectName]->play();
+        return true;
+    }
 }
 
-void Manager::display(string _objectName, ostream& os){
-    displayMultimedia(_objectName,os);
-    displayGroup(_objectName,os);
+bool Manager::listMultimedia(ostream& os){
+    for (auto const& element : multimediaMap) {
+        os << element.first;
+    }
+    return true;
+}
+bool Manager::listGroup(ostream& os){
+    for (auto const& element : groupMap) {
+        os << element.first;
+    }
+    return true;
 }
 
-void Manager::play(string _objectName){
-    playMultimedia(_objectName);
-    playGroup(_objectName);
+bool Manager::display(string _objectName, ostream& os){
+    if(!(displayMultimedia(_objectName,os) || displayGroup(_objectName,os))){
+        return false;
+    }
+    return true;
+}
+
+bool Manager::play(string _objectName){
+    if(!(playMultimedia(_objectName) || playGroup(_objectName))){
+        return false;
+    }
+    return true;
+}
+
+bool Manager::list(ostream& os){
+    listMultimedia(os);
+    listGroup(os);
+    return true;
 }
 bool Manager::processRequest(TCPConnection& cnx, const string& request, string& response)
 {
@@ -83,8 +130,18 @@ bool Manager::processRequest(TCPConnection& cnx, const string& request, string& 
       display(target,answer);
   }
   else if(action == "play"){
-      play(target);
-      answer << "playing " << target ;
+      if(play(target)){
+          answer << "Playing: " << target << endl;
+      }
+      else{
+          answer << "404 Could not find target " << target << endl;
+      }
+  }
+  else if(action == "list"){
+      list(answer);
+  }
+  else if (action == "help"){
+      help(answer);
   }
 
   if(answer.str().empty()){
@@ -93,7 +150,7 @@ bool Manager::processRequest(TCPConnection& cnx, const string& request, string& 
   else{
       response = "OK: " + answer.str();
   }
-  cerr << "response: " << response << endl;
+  cerr << "Response: " << response << endl;
 
   // renvoyer false si on veut clore la connexion avec le client
   return true;

@@ -21,10 +21,10 @@ int main(int argc, const char* argv[])
 
 #ifdef VERSION_1_0
     string sv1 = "test Video";
-    string sv2 = "/cal/homes/jalvarez/inf224/resources/video1.mp4";
+    string sv2 = "resources/video1.mp4";
 
     string si1 = "test Photo";
-    string si2 = "/cal/homes/jalvarez/inf224/resources/image1.png";
+    string si2 = "resources/image1.png";
 
     Video * video = new Video(sv1,sv2,15);
     Photo * photo = new Photo(si1,si2,15.0,13.0);
