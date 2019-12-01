@@ -42,6 +42,8 @@ public:
     bool display(string _objectName, ostream& os);
     bool play(string _objectName);
     bool list(ostream& os);
+    bool help(ostream& os);
+
 
     bool processRequest(TCPConnection& cnx, const string& request, string& response);
 };

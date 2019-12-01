@@ -71,17 +71,21 @@ bool Manager::playGroup(string _objectName){
 
 bool Manager::listMultimedia(ostream& os){
     for (auto const& element : multimediaMap) {
-        os << element.first;
+        os << element.first << endl;
     }
     return true;
 }
 bool Manager::listGroup(ostream& os){
     for (auto const& element : groupMap) {
-        os << element.first;
+        os << element.first << endl;
     }
     return true;
 }
 
+/// Les quatre actions principales du serveur:
+
+/// \fn display() : Cherche le Multimedia ou Groupe à partir de son nom dans les maps
+/// et envoi sur le ostream os le titre et le nom du fichier
 bool Manager::display(string _objectName, ostream& os){
     if(!(displayMultimedia(_objectName,os) || displayGroup(_objectName,os))){
         return false;
@@ -89,6 +93,8 @@ bool Manager::display(string _objectName, ostream& os){
     return true;
 }
 
+/// \fn play() : Joue un objet multimedia donné
+/// à partir de son nom
 bool Manager::play(string _objectName){
     if(!(playMultimedia(_objectName) || playGroup(_objectName))){
         return false;
@@ -96,11 +102,25 @@ bool Manager::play(string _objectName){
     return true;
 }
 
+/// \fn list() : Cherche les noms de tous les medias ajoutés aux maps
+/// et envoi sur le ostream os leurs titres.
 bool Manager::list(ostream& os){
     listMultimedia(os);
     listGroup(os);
     return true;
 }
+
+/// \fn help() : Envoi sur le ostream os une petite explication pour
+/// utiliser correctement la Telecommande.
+bool Manager::help(ostream& os){
+    os << "Welcome to the Juan-Alvarez Set-Top Box!" << endl;
+    os << "To use this controller, please write the media to play in the textbox labeled 'Target Media' at the bottom." << endl;
+    os << "If you dont know which Medias are included, press the 'List' button at the top of the interface." << endl;
+    os << "After you write a Target Media, please press 'Find' to receive it's location, or 'Play' to play it." << endl;
+
+    return true;
+}
+
 bool Manager::processRequest(TCPConnection& cnx, const string& request, string& response)
 {
   cerr << "\nRequest: '" << request << "'" << endl;
@@ -133,9 +153,6 @@ bool Manager::processRequest(TCPConnection& cnx, const string& request, string& 
       if(play(target)){
           answer << "Playing: " << target << endl;
       }
-      else{
-          answer << "404 Could not find target " << target << endl;
-      }
   }
   else if(action == "list"){
       list(answer);
@@ -145,10 +162,10 @@ bool Manager::processRequest(TCPConnection& cnx, const string& request, string& 
   }
 
   if(answer.str().empty()){
-      response = "404 COULD NOT FIND";
+      response = "404 COULD NOT FIND \n";
   }
   else{
-      response = "OK: " + answer.str();
+      response = "OK: " + answer.str() + "\n";
   }
   cerr << "Response: " << response << endl;
 
