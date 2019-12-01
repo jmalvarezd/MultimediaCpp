@@ -26,6 +26,10 @@ public:
     void play() override;
 
     ~Video();
+
+    void write(ostream &s) const;
+    void read(istream &s);
+
 };
 
 #endif // VIDEO_H

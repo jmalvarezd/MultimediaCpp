@@ -71,8 +71,14 @@ int main(int argc, const char* argv[])
     Manager * base = new Manager();
 
     // ajoute les données à jouer
-    base->createPhoto("testImage", "resources/image1.png",25.0,20.0);
-    base->createVideo("testVideo", "resources/video1.mp4",10);
+    // il est possible de les ajouter à la main, avec le code commenté
+
+/*     base->createPhoto("testImage", "resources/image1.png",25.0,20.0);
+    base->createVideo("testVideo", "resources/video1.mp4",10); */
+
+    // il est aussi possible de lire un fichier avec la serialisation des données
+    // (recommandé)
+    base->readSerialization("Serialized.txt");
 
     // le serveur appelera cette méthode chaque fois qu'il y a une requête
     server->setCallback(*base, &Manager::processRequest);

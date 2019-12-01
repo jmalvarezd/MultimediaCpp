@@ -30,6 +30,10 @@ public:
     void play() override;
 
     ~Photo();
+
+    void write(ostream &s) const;
+    void read(istream& is);
+
 };
 
 #endif // PHOTO_H

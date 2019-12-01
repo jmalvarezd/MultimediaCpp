@@ -6,6 +6,7 @@
 #include <map>
 #include <iostream>
 #include <sstream>
+#include <fstream>
 #include "photo.h"
 #include "video.h"
 #include "film.h"
@@ -44,8 +45,12 @@ public:
     bool list(ostream& os);
     bool help(ostream& os);
 
-
     bool processRequest(TCPConnection& cnx, const string& request, string& response);
+
+    bool writeSerialization(const string &outFile);
+    bool readSerialization(const string &inFile);
+    void saveSerializedPhoto(istream &is);
+    void saveSerializedVideo(istream &is);
 };
 
 #endif // MANAGER_H

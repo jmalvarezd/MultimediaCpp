@@ -1,0 +1,9 @@
+Photo
+testImage
+resources/image1.png
+25
+20
+Video
+testVideo
+resources/video1.mp4
+10

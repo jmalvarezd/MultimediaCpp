@@ -29,4 +29,16 @@ Multimedia::~Multimedia(){
     this->print(cout);
 }
 
+void Multimedia::write(ostream& os) const{
+    os << objectName << endl;
+    os << filePath << endl;
+}
+void Multimedia::read(istream& is){
+    string data;
+    getline(is,data);
+    objectName = data;
+    getline(is,data);
+    filePath = data;
+}
+
 

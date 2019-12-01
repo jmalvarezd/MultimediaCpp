@@ -27,3 +27,23 @@ Photo::~Photo(){
     cout << "destroying photo" << endl;
     this->print(cout);
 }
+
+void Photo::write(ostream &os) const{
+    os << "Photo\n";
+    os << getObjectName() << endl;
+    os << getFilePath() << endl;
+    os << getLatitude() << endl;
+    os << getLongitude() << endl;
+}
+
+void Photo::read(istream &is){
+    string data;
+    getline(is,data);
+    setObjectName(data);
+    getline(is,data);
+    setFilePath(data);
+    getline(is,data);
+    latitude = atof(data.c_str());
+    getline(is,data);
+    longitude = atof(data.c_str());
+}

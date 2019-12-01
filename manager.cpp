@@ -172,3 +172,73 @@ bool Manager::processRequest(TCPConnection& cnx, const string& request, string& 
   // renvoyer false si on veut clore la connexion avec le client
   return true;
 }
+
+/// Fonctions à utiliser pour la serialisation
+/// writeSerialization ouvre un fichier et ecrit touts les medias
+bool Manager::writeSerialization(const string &outFile){
+    ofstream outStream(outFile);
+    if(outStream){
+        for(auto element = multimediaMap.begin(); element != multimediaMap.end(); element++){
+            element->second->write(outStream);
+        }
+        outStream.close();
+        return true;
+    }
+    else{
+        cout << "Could not open file";
+        return false;
+    }
+    return false;
+}
+
+/// readSerialization ouvre un ficihier et lit tous les medias
+/// fonctionne seulement pour les phots et les videos
+bool Manager::readSerialization(const string &inFile){
+    ifstream inStream(inFile);
+    if(inStream){
+        while(inStream){
+            string className;
+            getline(inStream,className);
+            if(className.compare("Photo") == 0){
+                saveSerializedPhoto(inStream);
+            }
+            else{
+                saveSerializedVideo(inStream);
+            }
+        }
+        return true;
+    }
+    else{
+        cout << "Could not open file";
+        return false;
+    }
+    return false;
+}
+
+void Manager::saveSerializedPhoto(istream &is){
+    string name, path;
+    getline(is,name);
+    getline(is,path);
+
+    string data;
+    float lat, lon;
+    getline(is,data);
+    lat = atof(data.c_str());
+    getline(is,data);
+    lon = atof(data.c_str());
+    createPhoto(name,path,lat,lon);
+
+}
+
+void Manager::saveSerializedVideo(istream &is){
+    string name, path;
+    getline(is,name);
+    getline(is,path);
+
+    string data;
+    int len;
+    getline(is,data);
+    len = atoi(data.c_str());
+    createVideo(name,path,len);
+
+}

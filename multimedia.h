@@ -26,6 +26,11 @@ public:
     virtual void play() {};
 
     virtual ~Multimedia();
+
+    virtual void write(ostream& os) const;
+    virtual void read(istream& is);
+
+
 };
 
 #endif // MULTIMEDIA_H
