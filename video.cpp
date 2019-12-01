@@ -18,7 +18,7 @@ void Video::print(ostream& s) {
 }
 
 Video::~Video(){
-    cout << "destroying Video" << endl;
+    cout << "Video" << endl;
     this->print(cout);
 }
 

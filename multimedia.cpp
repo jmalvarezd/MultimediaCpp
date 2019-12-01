@@ -25,7 +25,7 @@ void Multimedia::print(ostream& os){
 }
 
 Multimedia::~Multimedia(){
-    cout << "destroying Multimedia " << endl;
+    cout << "Multimedia" << endl;
     this->print(cout);
 }
 

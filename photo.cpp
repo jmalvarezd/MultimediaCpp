@@ -24,7 +24,7 @@ void Photo::print(ostream& s) {
 }
 
 Photo::~Photo(){
-    cout << "destroying photo" << endl;
+    cout << "Photo" << endl;
     this->print(cout);
 }
 
